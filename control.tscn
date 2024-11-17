@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnte5rndfwtli"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_cthww"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cthww")
+
+[node name="save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 458.0
+offset_right = 185.0
+offset_bottom = 610.0
+disabled = true
+text = "save"
+
+[node name="open" type="Button" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 51.0
+offset_right = 207.0
+offset_bottom = 90.0
+text = "open file"
+
+[node name="data" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 8.0
+offset_right = 1119.0
+offset_bottom = 619.0
+placeholder_text = "data goes here after opening a file"
+editable = false
+
+[node name="password" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 212.0
+offset_bottom = 42.0
+placeholder_text = "encryption password"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="error" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 154.0
+offset_top = 117.0
+offset_right = 1029.0
+offset_bottom = 441.0
+
+[connection signal="pressed" from="save" to="." method="save"]
+[connection signal="pressed" from="open" to="." method="openFile"]
+[connection signal="file_selected" from="FileDialog" to="." method="openFileFromDialog"]
